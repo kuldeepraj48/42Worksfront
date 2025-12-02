@@ -11,7 +11,7 @@ function App() {
 
   // Load notes
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/notes")
+    axios.get("https://four2works-api-2.onrender.com/api/notes")
       .then(res => {
         setNotes(res.data.data);
       })
@@ -20,13 +20,13 @@ function App() {
 
   // Add Note
   const submitHandler = async () => {
-    await axios.post("http://127.0.0.1:8000/api/notes", form);
+    await axios.post("https://four2works-api-2.onrender.com/api/notes", form);
     window.location.reload();
   };
 
   // Delete Note
   const handleDelete = async (id) => {
-    await axios.delete(`http://127.0.0.1:8000/api/notes/${id}`);
+    await axios.delete(`https://four2works-api-2.onrender.com/api/notes/${id}`);
     setNotes(notes.filter(n => n.id !== id));
   };
 
@@ -38,7 +38,7 @@ function App() {
 
   // Save Edited Note
   const handleUpdate = async () => {
-    await axios.put(`http://127.0.0.1:8000/api/notes/${editForm.id}`, editForm);
+    await axios.put(`https://four2works-api-2.onrender.com/api/notes/${editForm.id}`, editForm);
 
     // Update list without reload
     setNotes(notes.map(n => n.id === editForm.id ? editForm : n));
