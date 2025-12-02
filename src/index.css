@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/*
+Source - https://stackoverflow.com/a
+Posted by Paulie_D, modified by community. See post 'Timeline' for change history
+Retrieved 2025-12-01, License - CC BY-SA 3.0
+*/
+table {
+  width: 100%; /* Full-width table */
+  border-collapse: collapse; /* Single borders */
+  margin: 20px 0; /* Add some margin around the table */
+}
+
+/* Style for table headers and data cells */
+th, td {
+  border: 1px solid #ddd; /* Light gray border */
+  padding: 12px; /* Spacing inside cells */
+  text-align: left; /* Align text to the left */
+}
+
+/* Style for table headers only */
+th {
+  background-color: #007bff; /* Blue background for headers */
+  color: white; /* White text for headers */
+}
+
+/* Zebra-striping: Add a different background color to odd-numbered rows */
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2; /* Lighter gray background */
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+  background-color: #ddd; /* Darker gray on hover */
+}
+
+/* Style the caption */
+caption {
+  padding: 10px;
+  font-weight: bold;
+  caption-side: top; /* Place caption above the table */
+}
