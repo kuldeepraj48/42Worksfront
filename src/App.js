@@ -20,9 +20,24 @@ function App() {
 
   // Add Note
   const submitHandler = async () => {
-    await axios.post("https://four2works-api-2.onrender.com/api/notes", form);
-    window.location.reload();
+    if (!form.title.trim()) {
+      alert("Title is required");
+      return;
+    }
+
+    if (!form.descriptions.trim()) {
+      alert("Description is required");
+      return;
+    }
+
+    try {
+      await axios.post("https://four2works-api-2.onrender.com/api/notes", form);
+      window.location.reload();
+    } catch (error) {
+      alert("Error adding note");
+    }
   };
+
 
   // Delete Note
   const handleDelete = async (id) => {
@@ -38,13 +53,28 @@ function App() {
 
   // Save Edited Note
   const handleUpdate = async () => {
-    await axios.put(`https://four2works-api-2.onrender.com/api/notes/${editForm.id}`, editForm);
+    if (!editForm.title.trim()) {
+      alert("Title is required");
+      return;
+    }
 
-    // Update list without reload
-    setNotes(notes.map(n => n.id === editForm.id ? editForm : n));
+    if (!editForm.descriptions.trim()) {
+      alert("Description is required");
+      return;
+    }
 
-    setOpenPopup(false);
+    try {
+      await axios.put(`https://four2works-api-2.onrender.com/api/notes/${editForm.id}`,
+        editForm
+      );
+
+      setNotes(notes.map(n => n.id === editForm.id ? editForm : n));
+      setOpenPopup(false);
+    } catch (error) {
+      alert("Error updating note");
+    }
   };
+
 
   return (
     <div style={{ padding: "30px" }}>
@@ -52,10 +82,13 @@ function App() {
 
       <input
         placeholder="Title"
+        value={form.title}
         onChange={(e) => setForm({ ...form, title: e.target.value })}
       />
+
       <input
         placeholder="Descriptions"
+        value={form.descriptions}
         onChange={(e) => setForm({ ...form, descriptions: e.target.value })}
       />
       <button onClick={submitHandler}>Add User 42Works</button>
